@@ -1,43 +1,44 @@
-let currentQuestion = 0;
-let score = 0;
-let questions = [];
+let currentQuestionIndex = 0;
+let leiTotalScore = 0;
+let luiTotalScore = 0;
 
-fetch('questions.json') // Carica il file JSON
+const questions = [];
+
+fetch('questions.json') // Carica le domande dal file JSON
     .then(response => response.json())
     .then(data => {
-        questions = data.questions;
+        questions.push(...data.questions);
         loadQuestion();
     });
 
 function loadQuestion() {
-    if (currentQuestion < questions.length) {
-        const question = questions[currentQuestion];
+    if (currentQuestionIndex < questions.length) {
+        const question = questions[currentQuestionIndex];
         document.getElementById("question").innerText = question.question;
-        document.getElementById("answer-input").value = ''; // Reset input
-        document.getElementById("submit-answer").disabled = false; // Rende il pulsante abilitato
     } else {
-        alert("Hai finito il quiz! Il tuo punteggio finale è: " + score);
+        alert("Hai finito il quiz! Il punteggio finale è: Lei " + leiTotalScore + " Lui " + luiTotalScore);
     }
-}
-
-function submitAnswer() {
-    const userAnswer = document.getElementById("answer-input").value.trim();
-    
-    // Qui aggiungi logica per confrontare la risposta con quella che il partner ha dato
-    // (verifica se la risposta che il partner ha dato coincide, o lascia che la coppia valuti la risposta)
-    
-    // Questo esempio semplicemente incrementa il punteggio se la risposta è considerata corretta
-    if (userAnswer.length > 0) {
-        score++;
-        document.getElementById("score-value").innerText = score;
-    }
-
-    document.getElementById("submit-answer").disabled = true; // Disabilita il pulsante
-    document.getElementById("next-question").disabled = false; // Abilita il pulsante per la prossima domanda
 }
 
 function nextQuestion() {
-    currentQuestion++;
-    document.getElementById("next-question").disabled = true; // Disabilita il pulsante
+    // Qui puoi aggiungere logica per confrontare le risposte inserite, se necessario
+    const leiPoints = parseInt(document.getElementById("lei-points").value);
+    const luiPoints = parseInt(document.getElementById("lui-points").value);
+
+    leiTotalScore += leiPoints;
+    luiTotalScore += luiPoints;
+
+    // Mostra i punteggi aggiornati
+    document.getElementById("lei-total").innerText = leiTotalScore;
+    document.getElementById("lui-total").innerText = luiTotalScore;
+
+    // Reset dei campi
+    document.getElementById("lei-answer").value = '';
+    document.getElementById("lui-answer").value = '';
+    document.getElementById("lei-points").value = 0;
+    document.getElementById("lui-points").value = 0;
+
+    // Passa alla prossima domanda
+    currentQuestionIndex++;
     loadQuestion();
 }

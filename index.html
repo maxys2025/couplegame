@@ -10,16 +10,19 @@
     <div id="quiz-container">
         <h1>Testa quanto ti conosci!</h1>
         
-        <!-- Contenitore per la categoria -->
-        <div id="category-container">
-            <p id="category">Categoria...</p>  <!-- Qui verrà mostrata la categoria -->
+        <!-- Contenitore per la categoria e la domanda -->
+        <div id="question-box">
+            <!-- Categoria della domanda -->
+            <div id="category-container">
+                <p id="category">Categoria...</p>  <!-- Qui verrà mostrata la categoria -->
+            </div>
+            
+            <!-- La domanda -->
+            <div id="question-container">
+                <p id="question">Domanda...</p>  <!-- Qui verrà mostrata la domanda -->
+            </div>
         </div>
-        
-        <!-- Contenitore per la domanda -->
-        <div id="question-container">
-            <p id="question">Domanda...</p>  <!-- Qui verrà mostrata la domanda -->
-        </div>
-        
+
         <div id="punteggio-container">
             <label for="lei-points">Punti Lei:</label>
             <input type="number" id="lei-points" min="0" value="0" />

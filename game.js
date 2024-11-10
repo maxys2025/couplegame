@@ -1,12 +1,16 @@
-const domande = [
-    { "question": "Qual è stato uno dei momenti più felici della tua infanzia?", "category": "Passato e Ricordi" },
-    { "question": "C'è un insegnante che ha avuto un impatto particolare su di te?", "category": "Passato e Ricordi" },
-    { "question": "Hai mai avuto un sogno ricorrente? Di cosa si trattava?", "category": "Passato e Ricordi" }
-];
-
+let domande = [];
 let punteggioLui = 0;
 let punteggioLei = 0;
 let indiceDomanda = 0;
+
+// Carica il file JSON con le domande
+fetch('domande.json')
+    .then(response => response.json())
+    .then(data => {
+        domande = data;
+        mostraDomanda();  // Mostra la prima domanda appena il JSON è caricato
+    })
+    .catch(error => console.error('Errore nel caricare il file JSON:', error));
 
 function mostraDomanda() {
     if (indiceDomanda < domande.length) {
@@ -15,7 +19,9 @@ function mostraDomanda() {
         document.getElementById("categoria").innerText = domanda.category;
         indiceDomanda++;
     } else {
-        alert("Hai finito le domande!");
+        alert("Hai finito le domande! Punteggio finale:\nLui: " + punteggioLui + "\nLei: " + punteggioLei);
+        // Nascondi il pulsante "Prossima Domanda" quando tutte le domande sono state mostrate
+        document.querySelector("button").style.display = "none";
     }
 }
 

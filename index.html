@@ -11,20 +11,17 @@
         <h1>Testa quanto ti conosci!</h1>
         <div id="question-container">
             <p id="question">Domanda...</p>
-            <div id="answers">
-                <button class="answer" onclick="checkAnswer(0)">Opzione 1</button>
-                <button class="answer" onclick="checkAnswer(1)">Opzione 2</button>
-                <button class="answer" onclick="checkAnswer(2)">Opzione 3</button>
-                <button class="answer" onclick="checkAnswer(3)">Opzione 4</button>
-            </div>
+            <input type="text" id="answer-input" placeholder="Scrivi la tua risposta..." />
+            <button id="submit-answer" onclick="submitAnswer()">Invia Risposta</button>
         </div>
         <div id="score">
             <p>Punteggio: <span id="score-value">0</span></p>
         </div>
         <div id="next-button-container">
-            <button id="next-question" onclick="nextQuestion()">Prossima Domanda</button>
+            <button id="next-question" onclick="nextQuestion()" disabled>Prossima Domanda</button>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

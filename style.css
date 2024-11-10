@@ -10,6 +10,8 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 0 auto;
 }
 
 h1 {
@@ -17,11 +19,15 @@ h1 {
     margin-bottom: 20px;
 }
 
-#answer-input {
+#answers-container {
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="number"] {
     padding: 10px;
     font-size: 1em;
     width: 80%;
-    margin: 10px 0;
+    margin: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -39,15 +45,7 @@ h1 {
     background-color: #45a049;
 }
 
-#next-question {
-    background-color: #008CBA;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#next-question:hover {
-    background-color: #007B9E;
+#score {
+    margin-top: 20px;
+    font-size: 1.2em;
 }

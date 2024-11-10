@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #535353;
+    background-color: #f2f2f2;
 }
 
 #quiz-container {
@@ -19,10 +19,24 @@ h1 {
     margin-bottom: 20px;
 }
 
+#question-box {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 #category-container {
     font-style: italic;
     color: #555;
     margin-bottom: 10px;
+}
+
+#question-container {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
 }
 
 #punteggio-container {

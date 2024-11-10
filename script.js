@@ -1,46 +1,43 @@
-const questions = [
-    {
-        question: "Qual è il nostro primo film insieme?",
-        options: ["Titanic", "Inception", "Avatar", "The Notebook"],
-        correct: 3
-    },
-    {
-        question: "Dove ci siamo conosciuti?",
-        options: ["Al bar", "In palestra", "A scuola", "Su internet"],
-        correct: 0
-    },
-    // Aggiungi altre domande qui
-];
-
 let currentQuestion = 0;
 let score = 0;
+let questions = [];
+
+fetch('questions.json') // Carica il file JSON
+    .then(response => response.json())
+    .then(data => {
+        questions = data.questions;
+        loadQuestion();
+    });
 
 function loadQuestion() {
-    const question = questions[currentQuestion];
-    document.getElementById("question").innerText = question.question;
-    const buttons = document.querySelectorAll("#answers button");
-    question.options.forEach((option, index) => {
-        buttons[index].innerText = option;
-    });
+    if (currentQuestion < questions.length) {
+        const question = questions[currentQuestion];
+        document.getElementById("question").innerText = question.question;
+        document.getElementById("answer-input").value = ''; // Reset input
+        document.getElementById("submit-answer").disabled = false; // Rende il pulsante abilitato
+    } else {
+        alert("Hai finito il quiz! Il tuo punteggio finale è: " + score);
+    }
 }
 
-function checkAnswer(answerIndex) {
-    const question = questions[currentQuestion];
-    if (answerIndex === question.correct) {
+function submitAnswer() {
+    const userAnswer = document.getElementById("answer-input").value.trim();
+    
+    // Qui aggiungi logica per confrontare la risposta con quella che il partner ha dato
+    // (verifica se la risposta che il partner ha dato coincide, o lascia che la coppia valuti la risposta)
+    
+    // Questo esempio semplicemente incrementa il punteggio se la risposta è considerata corretta
+    if (userAnswer.length > 0) {
         score++;
         document.getElementById("score-value").innerText = score;
-    } else {
-        alert("Ops, hai sbagliato! Prova di nuovo.");
     }
+
+    document.getElementById("submit-answer").disabled = true; // Disabilita il pulsante
+    document.getElementById("next-question").disabled = false; // Abilita il pulsante per la prossima domanda
 }
 
 function nextQuestion() {
     currentQuestion++;
-    if (currentQuestion < questions.length) {
-        loadQuestion();
-    } else {
-        alert("Hai completato il quiz! Il tuo punteggio finale è: " + score);
-    }
+    document.getElementById("next-question").disabled = true; // Disabilita il pulsante
+    loadQuestion();
 }
-
-loadQuestion();

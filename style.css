@@ -19,11 +19,17 @@ h1 {
     margin-bottom: 20px;
 }
 
-#answers-container {
+#category-container {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+#punteggio-container {
     margin-bottom: 20px;
 }
 
-input[type="text"], input[type="number"] {
+input[type="number"] {
     padding: 10px;
     font-size: 1em;
     width: 80%;

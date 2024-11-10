@@ -1,71 +1,53 @@
 body {
     font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    background-color: #f2f2f2;
 }
 
-#quiz-container {
-    margin-top: 50px;
-    background-color: white;
+#domanda-box {
+    background-color: #fff;
     padding: 20px;
+    margin: 20px auto;
+    width: 70%;
+    border: 2px solid #ccc;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    margin: 0 auto;
 }
 
-h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-#question-box {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#category-container {
-    font-style: italic;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-#question-container {
-    font-size: 1.2em;
-    font-weight: bold;
+h3 {
     color: #333;
 }
 
-#punteggio-container {
-    margin-bottom: 20px;
-}
-
-input[type="number"] {
-    padding: 10px;
-    font-size: 1em;
-    width: 80%;
-    margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#submit-answer {
+button {
     background-color: #4CAF50;
     color: white;
+    border: none;
     padding: 10px 20px;
-    font-size: 1em;
+    margin: 10px;
     border-radius: 5px;
     cursor: pointer;
 }
 
-#submit-answer:hover {
+button:hover {
     background-color: #45a049;
 }
 
-#score {
-    margin-top: 20px;
+h4 {
+    margin-top: 30px;
     font-size: 1.2em;
+    color: #333;
+}
+
+div {
+    margin: 20px 0;
+}
+
+span {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+#punteggio-lui, #punteggio-lei {
+    margin-left: 10px;
 }

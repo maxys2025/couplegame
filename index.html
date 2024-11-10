@@ -9,16 +9,28 @@
 <body>
     <div id="quiz-container">
         <h1>Testa quanto ti conosci!</h1>
+        
         <div id="question-container">
             <p id="question">Domanda...</p>
-            <input type="text" id="answer-input" placeholder="Scrivi la tua risposta..." />
-            <button id="submit-answer" onclick="submitAnswer()">Invia Risposta</button>
         </div>
+        
+        <div id="answers-container">
+            <input type="text" id="lei-answer" placeholder="Risposta Lei" />
+            <input type="text" id="lui-answer" placeholder="Risposta Lui" />
+        </div>
+        
+        <div id="punteggio-container">
+            <label for="lei-points">Punti Lei:</label>
+            <input type="number" id="lei-points" min="0" value="0" />
+
+            <label for="lui-points">Punti Lui:</label>
+            <input type="number" id="lui-points" min="0" value="0" />
+        </div>
+        
+        <button id="submit-answer" onclick="nextQuestion()">Prossima Domanda</button>
+
         <div id="score">
-            <p>Punteggio: <span id="score-value">0</span></p>
-        </div>
-        <div id="next-button-container">
-            <button id="next-question" onclick="nextQuestion()" disabled>Prossima Domanda</button>
+            <p>Punteggio Finale: Lei <span id="lei-total">0</span> | Lui <span id="lui-total">0</span></p>
         </div>
     </div>
 

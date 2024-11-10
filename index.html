@@ -4,37 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gioco per Fidanzati</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="quiz-container">
-        <h1>Testa quanto ti conosci!</h1>
-        
-        <!-- Contenitore per la categoria e la domanda -->
-        <div id="question-box">
-            <!-- Categoria della domanda -->
-        </div>
-            
-            <!-- La domanda -->
-            <div id="question-container">
-            </div>
-        </div>
+    <div id="domanda-box">
+        <h3 id="domanda"></h3>
+        <p id="categoria"></p>
+    </div>
 
-        <div id="punteggio-container">
-            <label for="lei-points">Punti Lei:</label>
-            <input type="number" id="lei-points" min="0" value="0" />
-
-            <label for="lui-points">Punti Lui:</label>
-            <input type="number" id="lui-points" min="0" value="0" />
-        </div>
-        
-        <button id="submit-answer" onclick="nextQuestion()">Prossima Domanda</button>
-
-        <div id="score">
-            <p>Punteggio Finale: Lei <span id="lei-total">0</span> | Lui <span id="lui-total">0</span></p>
+    <div>
+        <h4>Punteggio di Lui</h4>
+        <div>
+            <button onclick="aggiungiPunto('lui')">Aggiungi Punto</button>
+            <span id="punteggio-lui">0</span>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <div>
+        <h4>Punteggio di Lei</h4>
+        <div>
+            <button onclick="aggiungiPunto('lei')">Aggiungi Punto</button>
+            <span id="punteggio-lei">0</span>
+        </div>
+    </div>
+
+    <button onclick="mostraDomanda()">Prossima Domanda</button>
+
+    <script src="game.js"></script>
 </body>
 </html>

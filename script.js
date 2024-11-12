@@ -64,7 +64,6 @@ let questions = [
   { "question": "Se potesse imparare una nuova lingua istantaneamente, quale sarebbe?", "category": "Curiosità" },
   { "question": "Se potesse avere qualsiasi lavoro, quale sceglierebbe senza pensare ai soldi?", "category": "Curiosità" },
   { "question": "Qual è la cosa più folle che gli/le piacerebbe fare?", "category": "Curiosità" },
-
   { "question": "Quando è stato il suo primo bacio?", "category": "Sessualità" },
   { "question": "Quando è stata la sua prima volta?", "category": "Sessualità" },
   { "question": "Dove gli/le piace essere toccato?", "category": "Sessualità" },

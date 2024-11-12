@@ -6,20 +6,34 @@ let questions = [
 
 let currentQuestionIndex = 0;
 let scores = { him: 0, her: 0 };
-const goalScore = 10;  // Punteggio necessario per vincere
+const goalScore = 10;  // Punteggio per vincere
+
+function startGame() {
+  const nameHim = document.getElementById('name-him').value || "Lui";
+  const nameHer = document.getElementById('name-her').value || "Lei";
+
+  // Aggiorna le etichette con i nomi personalizzati
+  document.getElementById('label-him').innerText = nameHim;
+  document.getElementById('label-her').innerText = nameHer;
+
+  // Nasconde il form dei nomi e mostra il contenuto del gioco
+  document.getElementById('name-input').style.display = "none";
+  document.getElementById('game-content').style.display = "block";
+
+  // Carica la prima domanda
+  nextQuestion();
+}
 
 function updateScore(player, amount) {
   scores[player] += amount;
   document.getElementById(`score-${player}`).innerText = scores[player];
-  
-  // Controlla se il giocatore ha raggiunto il punteggio per vincere
   checkForWinner(player);
 }
 
 function checkForWinner(player) {
   if (scores[player] >= goalScore) {
-    document.getElementById('question-box').innerHTML = `<h2>${player === 'him' ? 'Lui' : 'Lei'} vince con ${goalScore} punti!</h2>`;
-    disableButtons();  // Disattiva i pulsanti una volta che qualcuno ha vinto
+    document.getElementById('question-box').innerHTML = `<h2>${document.getElementById(`label-${player}`).innerText} vince con ${goalScore} punti!</h2>`;
+    disableButtons();
   }
 }
 
@@ -39,6 +53,3 @@ function nextQuestion() {
     document.getElementById('category').innerText = "";
   }
 }
-
-// Carica la prima domanda all'inizio
-nextQuestion();

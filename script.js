@@ -46,6 +46,15 @@ let currentQuestionIndex = 0;
 let scores = { him: 0, her: 0 };
 const goalScore = 10;  // Punteggio per vincere
 
+// Funzione per mescolare le domande
+function shuffleQuestions() {
+  for (let i = questions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [questions[i], questions[j]] = [questions[j], questions[i]]; // Scambia le domande
+  }
+}
+
+// Avvia il gioco
 function startGame() {
   const nameHim = document.getElementById('name-him').value || "Lui";
   const nameHer = document.getElementById('name-her').value || "Lei";
@@ -57,6 +66,9 @@ function startGame() {
   // Nasconde il form dei nomi e mostra il contenuto del gioco
   document.getElementById('name-input').style.display = "none";
   document.getElementById('game-content').style.display = "block";
+
+  // Mescola le domande prima di iniziare il gioco
+  shuffleQuestions();
 
   // Carica la prima domanda
   nextQuestion();

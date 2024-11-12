@@ -7,21 +7,29 @@
 </head>
 <body>
   <div id="container">
-    <h1>Gioco di Coppia v1</h1>
+    <h1>Gioco di Coppia v2</h1>
+    
+    <!-- Box per le domande -->
     <div id="question-box">
       <p id="category"></p>
       <p id="question"></p>
     </div>
+
+    <!-- Sezione per il punteggio di Lui -->
     <div>
       <h2>Lui: <span id="score-him" class="score-display">0</span></h2>
       <button class="score-btn" onclick="updateScore('him', 1)">+1</button>
       <button class="score-btn" onclick="updateScore('him', -1)">-1</button>
     </div>
+    
+    <!-- Sezione per il punteggio di Lei -->
     <div>
       <h2>Lei: <span id="score-her" class="score-display">0</span></h2>
       <button class="score-btn" onclick="updateScore('her', 1)">+1</button>
       <button class="score-btn" onclick="updateScore('her', -1)">-1</button>
     </div>
+
+    <!-- Pulsante per passare alla prossima domanda -->
     <button onclick="nextQuestion()">Prossima Domanda</button>
   </div>
 

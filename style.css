@@ -1,6 +1,6 @@
 /* Stili base per la visualizzazione */
 body {
-  background-color: #535353; /* Colore di sfondo azzurro chiaro */
+  background-color: #535353;
   margin: 0;
   padding: 0;
   display: flex;
@@ -23,6 +23,10 @@ body {
 #question-box {
   font-size: 1.2em;
   margin: 20px;
+  padding: 15px;
+  background-color: #eef2f3; /* Colore di sfondo per il box delle domande */
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
 .score-btn {

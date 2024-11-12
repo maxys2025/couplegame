@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gioco per Fidanzati</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Gioco Domande di Coppia</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="domanda-box">
-        <h3 id="domanda"></h3>
-        <p id="categoria"></p>
+  <div id="container">
+    <h1>Gioco di Coppia</h1>
+    <div id="question-box">
+      <p id="category"></p>
+      <p id="question"></p>
     </div>
-
     <div>
-        <h4>Punteggio di Lui</h4>
-        <div>
-            <button onclick="aggiungiPunto('lui')">Aggiungi Punto</button>
-            <span id="punteggio-lui">0</span>
-        </div>
+      <h2>Lui: <span id="score-him" class="score-display">0</span></h2>
+      <button class="score-btn" onclick="updateScore('him', 1)">+1</button>
+      <button class="score-btn" onclick="updateScore('him', -1)">-1</button>
     </div>
-
     <div>
-        <h4>Punteggio di Lei</h4>
-        <div>
-            <button onclick="aggiungiPunto('lei')">Aggiungi Punto</button>
-            <span id="punteggio-lei">0</span>
-        </div>
+      <h2>Lei: <span id="score-her" class="score-display">0</span></h2>
+      <button class="score-btn" onclick="updateScore('her', 1)">+1</button>
+      <button class="score-btn" onclick="updateScore('her', -1)">-1</button>
     </div>
+    <button onclick="nextQuestion()">Prossima Domanda</button>
+  </div>
 
-    <button onclick="mostraDomanda()">Prossima Domanda</button>
-
-    <script src="game.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

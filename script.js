@@ -6,10 +6,26 @@ let questions = [
 
 let currentQuestionIndex = 0;
 let scores = { him: 0, her: 0 };
+const goalScore = 10;  // Punteggio necessario per vincere
 
 function updateScore(player, amount) {
   scores[player] += amount;
   document.getElementById(`score-${player}`).innerText = scores[player];
+  
+  // Controlla se il giocatore ha raggiunto il punteggio per vincere
+  checkForWinner(player);
+}
+
+function checkForWinner(player) {
+  if (scores[player] >= goalScore) {
+    document.getElementById('question-box').innerHTML = `<h2>${player === 'him' ? 'Lui' : 'Lei'} vince con ${goalScore} punti!</h2>`;
+    disableButtons();  // Disattiva i pulsanti una volta che qualcuno ha vinto
+  }
+}
+
+function disableButtons() {
+  document.querySelectorAll('.score-btn').forEach(button => button.disabled = true);
+  document.querySelector('button[onclick="nextQuestion()"]').disabled = true;
 }
 
 function nextQuestion() {

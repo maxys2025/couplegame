@@ -1,4 +1,4 @@
-let questions = let questions = [
+let questions = [
   { "question": "Qual è il suo cibo preferito?", "category": "Preferenze" },
   { "question": "Qual è il suo colore preferito?", "category": "Preferenze" },
   { "question": "Qual è il suo film preferito?", "category": "Preferenze" },

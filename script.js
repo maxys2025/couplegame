@@ -1,46 +1,33 @@
+let questions = [];
 let currentQuestionIndex = 0;
-let leiTotalScore = 0;
-let luiTotalScore = 0;
+let scores = { him: 0, her: 0 };
 
-const questions = [];
-
-fetch('questions.json') // Carica le domande dal file JSON
-    .then(response => response.json())
-    .then(data => {
-        questions.push(...data);
-        loadQuestion();
-    });
-
-function loadQuestion() {
-    if (currentQuestionIndex < questions.length) {
-        const question = questions[currentQuestionIndex];
-        // Carica la categoria
-        document.getElementById("category").innerText = `Categoria: ${question.category}`;
-        // Carica la domanda
-        document.getElementById("question").innerText = question.question;
-    } else {
-        alert("Hai finito il quiz! Il punteggio finale è: Lei " + leiTotalScore + " Lui " + luiTotalScore);
-    }
+function updateScore(player, amount) {
+  scores[player] += amount;
+  document.getElementById(`score-${player}`).innerText = scores[player];
 }
 
 function nextQuestion() {
-    // Aggiungi i punteggi assegnati dai partecipanti
-    const leiPoints = parseInt(document.getElementById("lei-points").value);
-    const luiPoints = parseInt(document.getElementById("lui-points").value);
-
-    // Somma i punteggi ai totali
-    leiTotalScore += leiPoints;
-    luiTotalScore += luiPoints;
-
-    // Aggiorna il punteggio totale visualizzato
-    document.getElementById("lei-total").innerText = leiTotalScore;
-    document.getElementById("lui-total").innerText = luiTotalScore;
-
-    // Reset dei campi per la prossima domanda
-    document.getElementById("lei-points").value = 0;
-    document.getElementById("lui-points").value = 0;
-
-    // Passa alla prossima domanda
+  if (currentQuestionIndex < questions.length) {
+    const questionData = questions[currentQuestionIndex];
+    document.getElementById('category').innerText = `Categoria: ${questionData.category}`;
+    document.getElementById('question').innerText = questionData.question;
     currentQuestionIndex++;
-    loadQuestion();
+  } else {
+    document.getElementById('question').innerText = "Gioco completato!";
+    document.getElementById('category').innerText = "";
+  }
 }
+
+function loadQuestions() {
+  fetch('questions.json')
+    .then(response => response.json())
+    .then(data => {
+      questions = data;
+      nextQuestion();
+    })
+    .catch(error => console.error("Errore nel caricamento delle domande:", error));
+}
+
+// Carica le domande quando la pagina è pronta
+window.onload = loadQuestions;

@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Couple Game</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The couple game</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>The Couple Game</h1>
-
-        <!-- Sezione per impostare i nomi dei giocatori -->
-        <div class="name-setup">
-            <input type="text" id="inputNameHim" placeholder="Nome di Lui">
-            <input type="text" id="inputNameHer" placeholder="Nome di Lei">
-            <button id="setNamesButton">Imposta Nomi</button>
-        </div>
-
-        <!-- Box della domanda e categoria -->
-        <div id="questionContainer">
-            <h2 id="categoryBox">Categoria</h2>
-            <p id="questionBox">Clicca su "Inizia Gioco" per la prima domanda!</p>
-        </div>
-
-        <!-- Pulsanti per avviare e avanzare il gioco -->
-        <div class="controls">
-            <button id="startGameButton">Inizia Gioco</button>
-            <button id="nextQuestionButton">Prossima Domanda</button>
-            <button id="resetGameButton">Ricomincia Gioco</button>
-        </div>
-
-        <!-- Sezione punteggi e controlli -->
-        <div class="scores">
-            <div class="score-panel">
-                <h3 id="scoreLabelHim">Lui</h3>
-                <p>Punteggio: <span id="scoreHim">0</span></p>
-                <button id="addPointHim">+1 Punto</button>
-                <button id="subtractPointHim">-1 Punto</button>
-            </div>
-            <div class="score-panel">
-                <h3 id="scoreLabelHer">Lei</h3>
-                <p>Punteggio: <span id="scoreHer">0</span></p>
-                <button id="addPointHer">+1 Punto</button>
-                <button id="subtractPointHer">-1 Punto</button>
-            </div>
-        </div>
+  <div id="container">
+    <h1>The Couple Game</h1>
+    
+    <!-- Form per inserire i nomi dei giocatori -->
+    <div id="name-input">
+      <input type="text" id="name-him" placeholder="Nome di Lui">
+      <input type="text" id="name-her" placeholder="Nome di Lei">
+      <button onclick="startGame()">Inizia Gioco</button>
     </div>
+    
+    <!-- Box per le domande (nascosto inizialmente) -->
+    <div id="game-content" style="display: none;">
+      <div id="question-box">
+        <p id="category">Categoria:</p>
+        <p id="question">La domanda apparirà qui.</p>
+      </div>
 
-    <script src="script.js"></script>
+      <!-- Sezione per il punteggio di Lui -->
+      <div>
+        <h2><span id="label-him">Lui</span>: <span id="score-him" class="score-display">0</span></h2>
+        <button class="score-btn" onclick="updateScore('him', 1)">+1</button>
+        <button class="score-btn" onclick="updateScore('him', -1)">-1</button>
+      </div>
+      
+      <!-- Sezione per il punteggio di Lei -->
+      <div>
+        <h2><span id="label-her">Lei</span>: <span id="score-her" class="score-display">0</span></h2>
+        <button class="score-btn" onclick="updateScore('her', 1)">+1</button>
+        <button class="score-btn" onclick="updateScore('her', -1)">-1</button>
+      </div>
+
+      <!-- Pulsante per passare alla prossima domanda -->
+      <button onclick="nextQuestion()">Prossima Domanda</button>
+      
+        <!-- Nuovo pulsante di reset -->
+      <button onclick="resetGame()">Ricomincia</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,4 +1,9 @@
-let questions = [];
+let questions = [
+  { "question": "Qual è stato uno dei momenti più felici della tua infanzia?", "category": "Passato e Ricordi" },
+  { "question": "C'è un insegnante che ha avuto un impatto particolare su di te?", "category": "Passato e Ricordi" },
+  { "question": "Hai mai avuto un sogno ricorrente? Di cosa si trattava?", "category": "Passato e Ricordi" }
+];
+
 let currentQuestionIndex = 0;
 let scores = { him: 0, her: 0 };
 
@@ -19,15 +24,5 @@ function nextQuestion() {
   }
 }
 
-function loadQuestions() {
-  fetch('questions.json')
-    .then(response => response.json())
-    .then(data => {
-      questions = data;
-      nextQuestion();
-    })
-    .catch(error => console.error("Errore nel caricamento delle domande:", error));
-}
-
-// Carica le domande quando la pagina è pronta
-window.onload = loadQuestions;
+// Carica la prima domanda all'inizio
+nextQuestion();

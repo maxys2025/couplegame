@@ -79,64 +79,85 @@ let questions = [
   { "question": "Ha mai fatto sesso all’aperto?", "category": "Sessualità" }
 ];
 
-let currentQuestionIndex = 0;
-let scores = { him: 0, her: 0 };
-const goalScore = 10;  // Punteggio per vincere
+let scoreHim = 0;
+let scoreHer = 0;
+let goalScore = 10;
 
-function startGame() {
-  const nameHim = document.getElementById('name-him').value || "Lui";
-  const nameHer = document.getElementById('name-her').value || "Lei";
-
-  document.getElementById('label-him').innerText = nameHim;
-  document.getElementById('label-her').innerText = nameHer;
-
-  document.getElementById('name-input').style.display = "none";
-  document.getElementById('game-content').style.display = "block";
-
-  nextQuestion();
+// Funzione per ottenere una domanda casuale
+function getRandomQuestion() {
+  const randomIndex = Math.floor(Math.random() * questions.length);
+  return questions[randomIndex];
 }
 
-function updateScore(player, amount) {
-  scores[player] += amount;
-  document.getElementById(`score-${player}`).innerText = scores[player];
-  checkForWinner(player);
+// Funzione per mostrare una nuova domanda
+function showNewQuestion() {
+  const randomQuestion = getRandomQuestion();
+  document.getElementById("questionBox").innerText = randomQuestion.question;
+  document.getElementById("categoryBox").innerText = randomQuestion.category;
 }
 
-function checkForWinner(player) {
-  if (scores[player] >= goalScore) {
-    document.getElementById('question-box').innerHTML = `<h2>${document.getElementById(`label-${player}`).innerText} vince con ${goalScore} punti!</h2>`;
-    disableButtons();
+// Funzione per aggiornare i punteggi
+function updateScores() {
+  document.getElementById("scoreHim").innerText = scoreHim;
+  document.getElementById("scoreHer").innerText = scoreHer;
+
+  // Controlla se uno dei giocatori ha raggiunto il punteggio obiettivo
+  if (scoreHim >= goalScore) {
+    alert(`${playerNameHim} ha vinto!`);
+    resetGame();
+  } else if (scoreHer >= goalScore) {
+    alert(`${playerNameHer} ha vinto!`);
+    resetGame();
   }
 }
 
-function disableButtons() {
-  document.querySelectorAll('.score-btn').forEach(button => button.disabled = true);
-  document.querySelector('button[onclick="nextQuestion()"]').disabled = true;
+// Funzioni per aumentare o diminuire i punti per Lui e Lei
+function addPointHim() {
+  scoreHim++;
+  updateScores();
 }
 
-function nextQuestion() {
-  if (currentQuestionIndex < questions.length) {
-    const questionData = questions[currentQuestionIndex];
-    document.getElementById('category').innerText = `Categoria: ${questionData.category}`;
-    document.getElementById('question').innerText = questionData.question;
-    currentQuestionIndex++;
-  } else {
-    document.getElementById('question').innerText = "Gioco completato!";
-    document.getElementById('category').innerText = "";
-  }
+function subtractPointHim() {
+  scoreHim--;
+  updateScores();
 }
 
-// Funzione di reset per ricominciare il gioco
+function addPointHer() {
+  scoreHer++;
+  updateScores();
+}
+
+function subtractPointHer() {
+  scoreHer--;
+  updateScores();
+}
+
+// Funzione per resettare il gioco
 function resetGame() {
-  scores = { him: 0, her: 0 };
-  currentQuestionIndex = 0;
-
-  // Aggiorna i punteggi
-  document.getElementById('score-him').innerText = 0;
-  document.getElementById('score-her').innerText = 0;
-
-  // Ricarica la prima domanda e abilita i pulsanti
-  nextQuestion();
-  document.querySelectorAll('.score-btn').forEach(button => button.disabled = false);
-  document.querySelector('button[onclick="nextQuestion()"]').disabled = false;
+  scoreHim = 0;
+  scoreHer = 0;
+  updateScores();
+  showNewQuestion();
 }
+
+// Nome dei giocatori personalizzabile
+let playerNameHim = "Lui";
+let playerNameHer = "Lei";
+
+function setPlayerNames() {
+  playerNameHim = document.getElementById("inputNameHim").value || "Lui";
+  playerNameHer = document.getElementById("inputNameHer").value || "Lei";
+  document.getElementById("scoreLabelHim").innerText = playerNameHim;
+  document.getElementById("scoreLabelHer").innerText = playerNameHer;
+  resetGame();
+}
+
+// Eventi sui pulsanti
+document.getElementById("startGameButton").addEventListener("click", showNewQuestion);
+document.getElementById("nextQuestionButton").addEventListener("click", showNewQuestion);
+document.getElementById("addPointHim").addEventListener("click", addPointHim);
+document.getElementById("subtractPointHim").addEventListener("click", subtractPointHim);
+document.getElementById("addPointHer").addEventListener("click", addPointHer);
+document.getElementById("subtractPointHer").addEventListener("click", subtractPointHer);
+document.getElementById("resetGameButton").addEventListener("click", resetGame);
+document.getElementById("setNamesButton").addEventListener("click", setPlayerNames);

@@ -1,6 +1,6 @@
 /* Stili base per la visualizzazione */
 body {
-  background-color: #535353;
+  background-color: #535353; /* Colore di sfondo azzurro chiaro */
   margin: 0;
   padding: 0;
   display: flex;

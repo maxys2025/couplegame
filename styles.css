@@ -1,6 +1,6 @@
 /* Stili base per la visualizzazione */
 body {
-  background: linear-gradient(135deg, #83a4d4, #b6fbff); /* Gradiente di sfondo */
+  background: linear-gradient(135deg, #535353, #23282b); /* Gradiente di sfondo */
   margin: 0;
   padding: 0;
   display: flex;

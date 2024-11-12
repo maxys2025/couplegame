@@ -1,50 +1,97 @@
 /* Stili base per la visualizzazione */
 body {
-  background-color: #535353; /* Colore di sfondo azzurro chiaro */
+  background: linear-gradient(135deg, #83a4d4, #b6fbff); /* Gradiente di sfondo */
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
+  color: #333;
 }
 
 #container {
   text-align: center;
   background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  padding: 30px;
   width: 90%;
   max-width: 500px;
+  transition: transform 0.3s;
+}
+
+#container:hover {
+  transform: scale(1.02); /* Piccolo ingrandimento al passaggio del mouse */
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #4CAF50; /* Verde per il titolo */
 }
 
 #question-box {
   font-size: 1.2em;
   margin: 20px;
-  padding: 15px;
-  background-color: #eef2f3; /* Colore di sfondo per il box delle domande */
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  padding: 20px;
+  background: #eef2f3;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#question-box p {
+  margin: 10px 0;
 }
 
 .score-btn {
-  font-size: 1em;
-  padding: 10px 20px;
-  margin: 5px;
+  font-size: 1.1em;
+  padding: 12px 25px;
+  margin: 10px 5px;
   cursor: pointer;
   border: none;
-  border-radius: 5px;
-  background-color: #4CAF50;
+  border-radius: 8px;
   color: white;
+  background-color: #4CAF50;
+  box-shadow: 0 5px 10px rgba(76, 175, 80, 0.2);
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .score-btn:hover {
-  background-color: #45a049;
+  background-color: #388E3C;
+  transform: translateY(-2px); /* Effetto sollevamento */
+}
+
+.score-btn:active {
+  transform: scale(0.95); /* Effetto click */
 }
 
 .score-display {
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.5em;
+  color: #4CAF50;
+}
+
+button {
+  background-color: #2196F3;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 5px 10px rgba(33, 150, 243, 0.2);
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #1E88E5;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: scale(0.95);
 }
